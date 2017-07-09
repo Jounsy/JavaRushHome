@@ -13,45 +13,60 @@ TableAdapter
 
 public class Solution {
     public static void main(String[] args) {
-        //это пример вывода
-        ATable aTable = new ATable() {
-            @Override
-            public String getCurrentUserName() {
-                return "Amigo";
+//        //это пример вывода
+//        ATable aTable = new ATable() {
+//            @Override
+//            public String getCurrentUserName() {
+//                return "Amigo";
+//            }
+//
+//            @Override
+//            public String getTableName() {
+//                return "DashboardTable";
+//            }
+//        };
+//
+//        BTable table = new TableAdapter(aTable);
+//        System.out.println(table.getHeaderText());
+//    }
+//
+//    public static class TableAdapter implements BTable {
+//       private ATable aTable;
+//        public TableAdapter(ATable aTable)
+//        {
+//            this.aTable = aTable;
+//        }
+//
+//
+//        @Override
+//        public String getHeaderText() {
+//            String userTable = "[" + aTable.getCurrentUserName()+ "]" + " : " + aTable.getTableName();
+//
+//            return userTable;
+//        }
+//    }
+//
+//    public interface ATable {
+//        String getCurrentUserName();
+//        String getTableName();
+//    }
+//
+//    public interface BTable {
+//        String getHeaderText();
+        new Thread(new Runnable(){
+            public void run(){
+                for (int i =0;i<10000;i++) {
+                    System.out.println("ouch!");
+                }
             }
+        }).start();
 
-            @Override
-            public String getTableName() {
-                return "DashboardTable";
-            }
-        };
+        new Thread(new Runnable(){
+            public void run(){
+                for (int j =0;j<10000;j++)
+                    System.out.println("Wooooow!");
+                }
 
-        BTable table = new TableAdapter(aTable);
-        System.out.println(table.getHeaderText());
-    }
-
-    public static class TableAdapter implements BTable {
-       private ATable aTable;
-        public TableAdapter(ATable aTable)
-        {
-            this.aTable = aTable;
-        }
-
-
-        @Override
-        public String getHeaderText() {
-            String userTable = "[" + aTable.getCurrentUserName()+ "]" + " : " + aTable.getTableName();
-
-            return userTable;
-        }
-    }
-
-    public interface ATable {
-        String getCurrentUserName();
-        String getTableName();
-    }
-
-    public interface BTable {
-        String getHeaderText();
+        }).start();
     }
 }
